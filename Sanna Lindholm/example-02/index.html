@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <video id="video"></video>
+    <canvas id="canvas" class="border"></canvas>
+    <script>
+      // Notice there is no 'import' statement. 'handTrack' and 'tf' is
+      // available on the index-page because of the script tag above.
+      const video = document.getElementById("video");
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      // start webcam video stream on given video element
+      handTrack.startVideo(video);
+      // Load the model.
+      handTrack.load().then((model) => {
+        // detect objects in the video.
+        model.detect(video).then((predictions) => {
+          console.log("Predictions: ", predictions);
+        });
+      });
+    </script>
+  </body>
+</html>
