@@ -1,0 +1,27 @@
+video, canvas {
+    display: none;
+}
+
+.rigth{
+    background-color: red;
+    transition: all 1s;
+    margin-left: 80vw;
+}
+
+.left {
+    background-color: blue;
+    transition: all 1s;
+    margin-right: 80vw;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    width: 20vw;
+    height: 100vh;
+}
