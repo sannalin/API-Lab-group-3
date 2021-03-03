@@ -20,7 +20,7 @@
       handTrack.load().then((model) => {
         // detect objects in the image.
         model.detect(img).then((predictions) => {
-          console.log("Predictions: ", predictions);
+          alert(" A hand is detected");
         });
       });
     </script>
