@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"></script>
+    <style>
+      #button {
+        margin: 12px;
+        padding: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Hand detection</h1>
+    <!-- create a video, canvas and button element -->
+
+    <video id="video"></video>
+    <canvas id="canvas" class="border"></canvas>
+
+    <button id="button"></button>
+
+    <script>
+      let buttonclicked = false;
+      // Notice there is no 'import' statement. 'handTrack' and 'tf' is
+      // available on the index-page because of the script tag above.
+      const video = document.getElementById("video");
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      // load the handtrack model and
+      handTrack.load().then((model) => {
+        // when clicked if the button state is true the function for starting the web camera will run.
+        // when clicked if the button state is false the web camera will stop when clicked.
+        document
+          .getElementById("button")
+          .addEventListener("click", async function () {
+            buttonclicked = !buttonclicked;
+            setButtonState();
+            if (buttonclicked === false) {
+              handTrack.stopVideo(video);
+            } else {
+              beginVideo();
+            }
+          });
+
+        //starts the web camera
+        function beginVideo() {
+          handTrack.startVideo(video).then(function (status) {
+            if (status) {
+              videoOn = true;
+              runDetection();
+            }
+          });
+        }
+        // detect objects in the video.
+        function runDetection() {
+          model.detect(video).then(async (predictions) => {
+            model.renderPredictions(predictions, canvas, context, video);
+            // makes the detection to continue run
+            requestAnimationFrame(runDetection);
+            // create a variable with fetch options
+            const options = {
+              // what kind of method the client will use for sending to the server
+              method: "POST",
+
+              // what kind of content I will sent with the "POST"
+              headers: {
+                "Content-Type": "application/json",
+              },
+            };
+            if (predictions.length >= 1) {
+              // wait until the /set-arduino-light has been fetched and wait for the response from the server about the arduino light and read it as json
+              const response = await fetch("/set-arduino-light", options);
+              const responseJSON = await response.json();
+            }
+          });
+        }
+
+        setButtonState();
+      });
+
+      // function for changing the styling of the button depending on what state it is in.
+      function setButtonState() {
+        if (buttonclicked) {
+          button.textContent = "turn off camera";
+          button.style.color = "black";
+          button.style.backgroundColor = "red";
+        } else {
+          button.textContent = "turn on camera";
+          button.style.color = "white";
+          button.style.backgroundColor = "green";
+        }
+      }
+    </script>
+  </body>
+</html>
