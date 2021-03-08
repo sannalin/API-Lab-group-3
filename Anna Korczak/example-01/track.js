@@ -5,6 +5,7 @@ const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 let trackButton = document.getElementById("trackbutton");
 let updateNote = document.getElementById("updatenote");
+let plantVideo = document.getElementById("movement");
 
 let isVideo = false;
 let model = null;
@@ -54,7 +55,32 @@ function runDetection() {
 handTrack.load(modelParams).then(lmodel => {
     // detect objects in the image.
     model = lmodel
-    updateNote.innerText = "Loaded Model!"
+    updateNote.innerText = "Model loaded!"
     console.log("Model loaded!");
     trackButton.disabled = false
 });
+
+function playVideo() {
+    console.log("Shaking plant")
+    plantVideo.play();
+}
+
+function movePlant() {
+    model.detect(video).then((predictions) => {
+        if (predictions[0]) {
+            model.renderPredictions(predictions, canvas, context, video);
+            /* console.log("Predictions: ", predictions[0]); */
+            let x = predictions[0].bbox[0] + predictions[0].bbox[2] / 2;
+            console.log("x: " + x);
+            if (x = true) {
+                playVideo();
+            } 
+            /* else if (x > 500) {
+                movePlant();
+            }*/
+        }
+        setTimeout(() => {
+            runDetection();
+        }, 1000);
+        });
+    }
