@@ -1,3 +1,5 @@
+console.log("Ready!")
+
 const video = document.getElementById("myvideo");
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
@@ -15,7 +17,7 @@ const modelParams = {
 }
 
 function startVideo() {
-    handTrack.startVideo(video).then(function (status) {
+    handTrack.startVideo(video).then(function(status) {
         console.log("video started", status);
         if (status) {
             updateNote.innerText = "Video started. Now tracking"
@@ -33,13 +35,11 @@ function toggleVideo() {
         startVideo();
     } else {
         updateNote.innerText = "Stopping video"
-        handTrack.stopVideo(video)
+        handTrack.stopVideo(video);
         isVideo = false;
         updateNote.innerText = "Video stopped"
     }
 }
-
-
 
 function runDetection() {
     model.detect(video).then(predictions => {
@@ -51,10 +51,10 @@ function runDetection() {
     });
 }
 
-// Load the model.
 handTrack.load(modelParams).then(lmodel => {
     // detect objects in the image.
     model = lmodel
     updateNote.innerText = "Loaded Model!"
+    console.log("Model loaded!");
     trackButton.disabled = false
 });
