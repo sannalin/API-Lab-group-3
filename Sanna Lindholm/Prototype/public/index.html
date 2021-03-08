@@ -57,17 +57,20 @@
             model.renderPredictions(predictions, canvas, context, video);
             // makes the detection to continue run
             requestAnimationFrame(runDetection);
-            // create a variable with fetch options
-            const options = {
-              // what kind of method the client will use for sending to the server
-              method: "POST",
 
-              // what kind of content I will sent with the "POST"
-              headers: {
-                "Content-Type": "application/json",
-              },
-            };
+            // if the camera detects one hand or more the fetch function will run.
             if (predictions.length >= 1) {
+              // create a variable with fetch options
+              const options = {
+                // what kind of method the client will use for sending to the server
+                method: "POST",
+
+                // what kind of content I will sent with the "POST"
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              };
+
               // wait until the /set-arduino-light has been fetched and wait for the response from the server about the arduino light and read it as json
               const response = await fetch("/set-arduino-light", options);
               const responseJSON = await response.json();
