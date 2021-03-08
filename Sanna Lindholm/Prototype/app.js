@@ -1,15 +1,19 @@
-const { Board, Led } = require("johnny-five");
+const { Board, Servo } = require("johnny-five");
 const board = new Board({ port: "COM3" });
 
 const express = require("express");
 
 const app = express();
 
-let isLightOn = false;
+let servoOn = false;
 
 // when the arduino is connected run the function
 board.on("ready", () => {
-  const led = new Led(2);
+  const servo = new Servo({ pin: 10, range: [45, 135], center: true });
+
+  // servo.sweep();
+  //servo.stop();
+  //servo.home();
 
   app.listen(3001, () => {});
   app.use(express.static("public"));
@@ -17,12 +21,12 @@ board.on("ready", () => {
 
   // When fetch for "/set-arduino-light" with POST happens run the function.
   app.post("/set-arduino-light", (request, response) => {
-    if (isLightOn == false) {
-      led.on();
+    if (servoOn == false) {
+      servo.sweep();
     } else {
-      led.stop().off();
+      servo.stop();
     }
-    isLightOn = !isLightOn;
+    servoOn = !servoOn;
 
     response.json({
       status: "success",
