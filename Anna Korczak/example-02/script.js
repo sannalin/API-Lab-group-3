@@ -1,7 +1,10 @@
 const video = document.getElementById("myvideo");
   const canvas = document.getElementById("canvas");
   const context = canvas.getContext("2d");
-  let model;
+  let trackButton = document.getElementById("trackbutton");
+  let model = null;
+  isVideo = false;
+
   const modelParams = {
     flipHorizontal: true, // flip e.g for video  
     imageScaleFactor: 0.7, // reduce input image size for gains in speed
@@ -9,14 +12,30 @@ const video = document.getElementById("myvideo");
     iouThreshold: 0.5, // ioU threshold for non-max suppression
     scoreThreshold: 0.75, // confidence threshold for predictions.
   }
+
+  function startVideo() {
   handTrack.startVideo(video).then(function(status) {
     if (status) {
       logOutput("Video started");
+      isVideo = true;
       runDetection()
     } else {
       logOutput("Please enable video")
     }
   });
+  }
+
+  function toggleVideo() {
+    if (!isVideo) {
+        logOutput("Starting video...");
+        startVideo();
+    } else {
+        logOutput("Stopping video...");
+        handTrack.stopVideo(video)
+        isVideo = false;
+        logOutput("Video stopped");
+    }
+}
 
   function logOutput(txt) {
     document.querySelector("#output").appendChild(document.createElement('p')).textContent = txt;
@@ -41,9 +60,14 @@ const video = document.getElementById("myvideo");
       setTimeout(() => {
         runDetection()
       }, 100);
+      if (isVideo) {
+        requestAnimationFrame(runDetection);
       // requestAnimationFrame(runDetection);
     });
   }
+
   handTrack.load(modelParams).then(_model => {
     model = _model;
+    logOutput("Loaded");
+    trackButton.disabled = false
   });
