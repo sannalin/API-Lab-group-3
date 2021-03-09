@@ -12,7 +12,7 @@ let model = null;
 
 const modelParams = {
     flipHorizontal: true,   // flip e.g for video  
-    maxNumBoxes: 20,        // maximum number of boxes to detect
+    maxNumBoxes: 1,        // maximum number of boxes to detect
     iouThreshold: 0.5,      // ioU threshold for non-max suppression
     scoreThreshold: 0.6,    // confidence threshold for predictions.
 }
@@ -52,27 +52,14 @@ function runDetection() {
     });
 }
 
-handTrack.load(modelParams).then(lmodel => {
-    // detect objects in the image.
-    model = lmodel
-    updateNote.innerText = "Model loaded!"
-    console.log("Model loaded!");
-    trackButton.disabled = false
-});
-
-function playVideo() {
-    console.log("Shaking plant")
-    plantVideo.play();
-}
-
 function movePlant() {
-    model.detect(video).then((predictions) => {
+       model.detect(video).then((predictions) => {
         if (predictions[0]) {
             model.renderPredictions(predictions, canvas, context, video);
             /* console.log("Predictions: ", predictions[0]); */
             let x = predictions[0].bbox[0] + predictions[0].bbox[2] / 2;
             console.log("x: " + x);
-            if (x = true) {
+            if (x < 300) {
                 playVideo();
             } 
             /* else if (x > 500) {
@@ -84,3 +71,16 @@ function movePlant() {
         }, 1000);
         });
     }
+
+function playVideo() {
+    console.log("Shaking plant");
+    $('#movement').trigger('play');
+    }
+
+handTrack.load(modelParams).then(lmodel => {
+        // detect objects in the image.
+    model = lmodel
+    updateNote.innerText = "Model loaded!"
+    console.log("Model loaded!");
+    trackButton.disabled = false
+});

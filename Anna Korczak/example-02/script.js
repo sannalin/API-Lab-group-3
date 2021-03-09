@@ -11,7 +11,7 @@ isVideo = false;
 
 const modelParams = {
   flipHorizontal: true, // flip e.g for video
-  imageScaleFactor: 0.7, // reduce input image size for gains in speed
+  //imageScaleFactor: 0.7, // reduce input image size for gains in speed
   maxNumBoxes: 1, // maximum number of boxes to detect
   iouThreshold: 0.5, // ioU threshold for non-max suppression
   scoreThreshold: 0.75, // confidence threshold for predictions.
@@ -20,11 +20,11 @@ const modelParams = {
 function startVideo() {
     handTrack.startVideo(video).then(function (status) {
     if (status) {
-        logOutput("Video started");
+        logOutput("Video started, wait...");
         isVideo = true;
         runDetection();
     } else {
-        logOutput("Please enable video");
+        logOutput("Please enable video.");
     }
     });
 }
@@ -37,7 +37,7 @@ function toggleVideo() {
     logOutput("Stopping video...");
     handTrack.stopVideo(video);
     isVideo = false;
-    logOutput("Video stopped");
+    logOutput("Video stopped.");
     }
 }
 
@@ -56,16 +56,16 @@ function runDetection() {
         let x = predictions[0].bbox[0] + predictions[0].bbox[2] / 2;
         console.log("x: " + x);
         if (x < 300) {
-        logOutput("Hand position is LEFT");
+        logOutput("LEFT");
         } else if (x > 300) {
-        logOutput("Hand position is RIGHT");
+        logOutput("RIGHT");
         } else {
         logOutput("Hand position not recognized");
         }
     }
     setTimeout(() => {
         runDetection();
-    }, 1000);
+    }, 2000);
     });
 }
 
