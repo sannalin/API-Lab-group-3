@@ -9,7 +9,7 @@ let servoOn = false;
 
 // when the arduino is connected run the function
 board.on("ready", () => {
-  const servo = new Servo({ pin: 10, range: [45, 135], center: true });
+  const servo = new Servo({ pin: 10, range: [80, 100], center: true });
 
   // servo.sweep();
   //servo.stop();
@@ -21,13 +21,15 @@ board.on("ready", () => {
 
   // When fetch for "/set-arduino-light" with POST happens run the function.
   app.post("/set-arduino-light", (request, response) => {
-    if (servoOn == false) {
+    if (servoOn === false) {
+      servoOn = true;
       servo.sweep();
-    } else {
-      servo.stop();
+      setTimeout(function stop() {
+        servo.stop();
+        servo.center();
+        servoOn = false;
+      }, 5000);
     }
-    servoOn = !servoOn;
-
     response.json({
       status: "success",
     });
