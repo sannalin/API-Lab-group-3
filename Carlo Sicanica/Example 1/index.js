@@ -14,7 +14,7 @@ const modelParams = {
   flipHorizontal: true, // flip e.g for video
   maxNumBoxes: 1, // maximum number of boxes to detect
   iouThreshold: 1, // ioU threshold for non-max suppression
-  scoreThreshold: 0.75, // confidence threshold for predictions.
+  scoreThreshold: 0.45, // confidence threshold for predictions.
 };
 
 function startVideo() {
