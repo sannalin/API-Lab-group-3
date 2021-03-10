@@ -12,8 +12,8 @@
 
   <body>
     <h1>Hand detection</h1>
-    <!-- create a video, canvas and button element -->
 
+    <!-- create a video, canvas and button element -->
     <video id="video"></video>
     <canvas id="canvas" class="border"></canvas>
 
@@ -57,19 +57,22 @@
             model.renderPredictions(predictions, canvas, context, video);
             // makes the detection to continue run
             requestAnimationFrame(runDetection);
-            // create a variable with fetch options
-            const options = {
-              // what kind of method the client will use for sending to the server
-              method: "POST",
 
-              // what kind of content I will sent with the "POST"
-              headers: {
-                "Content-Type": "application/json",
-              },
-            };
+            // if the camera detects one hand or more the fetch function will run.
             if (predictions.length >= 1) {
-              // wait until the /set-arduino-light has been fetched and wait for the response from the server about the arduino light and read it as json
-              const response = await fetch("/set-arduino-light", options);
+              // create a variable with fetch options
+              const options = {
+                // what kind of method the client will use for sending to the server
+                method: "POST",
+
+                // what kind of content I will sent with the "POST"
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              };
+
+              // wait until the /plantMove has been fetched and wait for the response from the server about the arduino light and read it as json
+              const response = await fetch("/plantMove", options);
               const responseJSON = await response.json();
             }
           });

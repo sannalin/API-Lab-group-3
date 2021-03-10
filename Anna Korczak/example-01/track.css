@@ -1,8 +1,9 @@
 body {
     padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.p20 {
+.button {
     padding: 20px;
 }
 
@@ -13,12 +14,17 @@ body {
     height: 338px;
     border-bottom: 3px solid #0063FF;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 #00000030;
-  background: #333;
+    background: #333;
 
 }
 
-.mb10 {
-    margin-bottom: 10px
+.wrapper {
+    clear: both;
+}
+
+.container {
+    margin: 20px;
+    float: left;
 }
 
 .mt10 {
@@ -30,4 +36,8 @@ body {
     background: rgb(245, 147, 20);
     color: white;
     display: inline;
+}
+
+#myvideo {
+    display: none;
 }
