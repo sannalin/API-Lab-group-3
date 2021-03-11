@@ -1,6 +1,7 @@
 # Handtrack.js
 Handtrack.js library allows you track a user’s hand (bounding box) from an image in any orientation, in 3 lines of code. It allows developers quickly prototype hand/gesture interactions powered by a trained hand detection model.
 > View a live demo in your [browser here](https://victordibia.github.io/handtrack.js/).
+> 
 > https://victordibia.com/handtrack.js/#/
 
 # What the project does
