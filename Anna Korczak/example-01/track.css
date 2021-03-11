@@ -1,5 +1,10 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 body {
-    padding: 20px;
+    padding: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -55,4 +60,14 @@ body {
 
 #myvideo {
     display: none;
+}
+
+h2 {
+    padding: 0px;
+    margin: 10px;
+}
+
+p {
+    padding: 0px;
+    margin: 10px;
 }
