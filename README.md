@@ -1,5 +1,3 @@
-# API Lab repository (group-3)
-
 # Handtrack.js
 Handtrack.js library allows you track a user’s hand (bounding box) from an image in any orientation, in 3 lines of code. It allows developers quickly prototype hand/gesture interactions powered by a trained hand detection model.
 
