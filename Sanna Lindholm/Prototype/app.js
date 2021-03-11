@@ -1,5 +1,5 @@
 const { Board, Servo } = require("johnny-five");
-const board = new Board({ port: "COM9" });
+const board = new Board({ port: "COM3" });
 
 const express = require("express");
 
@@ -13,7 +13,7 @@ board.on("ready", () => {
   const servo = new Servo({ pin: 10, startAt: 180 });
 
   // listen to local port 3001 using the express API to read the
-  app.listen(3002, () => {});
+  app.listen(3001, () => {});
   app.use(express.static("public"));
   app.use(express.json());
 
@@ -23,32 +23,22 @@ board.on("ready", () => {
   function angrySweep() {
     // the servo will sweep between 85 and 95 degrees in 75 ms after 5000ms the servo will stop and return to a position of 90 degrees
     servo.sweep({
-<<<<<<< HEAD
-      range: [180, 155],
-      interval: 60,
-=======
       range: [180, 175],
       interval: 75,
->>>>>>> 0c988de256bcc1eb14d716ddbf71743c9c6c7e82
     });
     setTimeout(function stop() {
       servo.stop();
       servo.home(180);
       servoOn = false;
-    }, 4000);
+    }, 5000);
   }
 
   // the servo will sweep between 83 and 97 degrees in 300 ms after 5000ms the servo will stop and return to a position of 90 degrees
   // soil moisture starts to get low, needs water
   function waterSweep() {
     servo.sweep({
-<<<<<<< HEAD
-      range: [180, 160],
-      interval: 150,
-=======
       range: [180, 165],
       interval: 300,
->>>>>>> 0c988de256bcc1eb14d716ddbf71743c9c6c7e82
     });
     setTimeout(function stop() {
       servo.stop();
@@ -61,13 +51,8 @@ board.on("ready", () => {
   // sufficient soil moisture
   function happySweep() {
     servo.sweep({
-<<<<<<< HEAD
-      range: [180, 150],
-      interval: 600,
-=======
       range: [180, 160],
       interval: 1500,
->>>>>>> 0c988de256bcc1eb14d716ddbf71743c9c6c7e82
     });
     setTimeout(function stop() {
       servo.stop();
@@ -80,9 +65,9 @@ board.on("ready", () => {
   app.post("/plantMove", (request, response) => {
     if (servoOn === false) {
       servoOn = true;
-      //happySweep();
-      waterSweep();
-       //angrySweep();
+      happySweep();
+      //waterSweep();
+      // angrySweep();
     }
     response.json({
       status: "success",
