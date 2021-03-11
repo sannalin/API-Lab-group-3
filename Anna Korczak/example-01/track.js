@@ -43,39 +43,22 @@ function toggleVideo() {
 }
 
 function runDetection() {
-    model.detect(video).then(predictions => {
-        console.log("Predictions: ", predictions);
-        model.renderPredictions(predictions, canvas, context, video);
-        if (isVideo) {
-            requestAnimationFrame(runDetection);
-        }
+    model.detect(video).then((predictions) => {
+      console.log("Predictions: ", predictions);
+      model.renderPredictions(predictions, canvas, context, video);
+      if (isVideo) {
+        requestAnimationFrame(runDetection);
+      }
+      if (predictions.length >= 1) {
+        playVideo();
+      }
     });
-}
-
-function movePlant() {
-       model.detect(video).then((predictions) => {
-        if (predictions[0]) {
-            model.renderPredictions(predictions, canvas, context, video);
-            /* console.log("Predictions: ", predictions[0]); */
-            let x = predictions[0].bbox[0] + predictions[0].bbox[2] / 2;
-            console.log("x: " + x);
-            if (x < 300) {
-                playVideo();
-            } 
-            /* else if (x > 500) {
-                movePlant();
-            }*/
-        }
-        setTimeout(() => {
-            runDetection();
-        }, 1000);
-        });
-    }
+  }
 
 function playVideo() {
-    console.log("Shaking plant");
-    $('#movement').trigger('play');
-    }
+    console.log("Shaky shaky")
+    plantVideo.play()
+}
 
 handTrack.load(modelParams).then(lmodel => {
         // detect objects in the image.

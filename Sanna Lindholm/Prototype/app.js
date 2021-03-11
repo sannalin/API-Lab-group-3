@@ -1,5 +1,5 @@
 const { Board, Servo } = require("johnny-five");
-const board = new Board({ port: "COM3" });
+const board = new Board({ port: "COM9" });
 
 const express = require("express");
 
@@ -10,10 +10,10 @@ let servoOn = false;
 // when the arduino is connected run the function
 board.on("ready", () => {
   // set the servo to pin 10 and also set the starting position to center by default 90 degrees
-  const servo = new Servo({ pin: 10, center: true });
+  const servo = new Servo({ pin: 10, startAt: 180 });
 
   // listen to local port 3001 using the express API to read the
-  app.listen(3001, () => {});
+  app.listen(3002, () => {});
   app.use(express.static("public"));
   app.use(express.json());
 
@@ -23,26 +23,26 @@ board.on("ready", () => {
   function angrySweep() {
     // the servo will sweep between 85 and 95 degrees in 75 ms after 5000ms the servo will stop and return to a position of 90 degrees
     servo.sweep({
-      range: [85, 95],
-      interval: 75,
+      range: [180, 155],
+      interval: 60,
     });
     setTimeout(function stop() {
       servo.stop();
-      servo.home(90);
+      servo.home(180);
       servoOn = false;
-    }, 5000);
+    }, 4000);
   }
 
   // the servo will sweep between 83 and 97 degrees in 300 ms after 5000ms the servo will stop and return to a position of 90 degrees
   // soil moisture starts to get low, needs water
   function waterSweep() {
     servo.sweep({
-      range: [83, 97],
-      interval: 300,
+      range: [180, 160],
+      interval: 150,
     });
     setTimeout(function stop() {
       servo.stop();
-      servo.home(90);
+      servo.home(180);
       servoOn = false;
     }, 5000);
   }
@@ -51,12 +51,12 @@ board.on("ready", () => {
   // sufficient soil moisture
   function happySweep() {
     servo.sweep({
-      range: [80, 100],
-      interval: 1500,
+      range: [180, 150],
+      interval: 600,
     });
     setTimeout(function stop() {
       servo.stop();
-      servo.home(90);
+      servo.home(180);
       servoOn = false;
     }, 8000);
   }
@@ -65,9 +65,9 @@ board.on("ready", () => {
   app.post("/plantMove", (request, response) => {
     if (servoOn === false) {
       servoOn = true;
-      happySweep();
-      //waterSweep();
-      // angrySweep();
+      //happySweep();
+      waterSweep();
+       //angrySweep();
     }
     response.json({
       status: "success",
