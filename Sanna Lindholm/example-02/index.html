@@ -49,6 +49,7 @@
           model.detect(video).then((predictions) => {
             model.renderPredictions(predictions, canvas, context, video);
             requestAnimationFrame(runDetection);
+            if(predictions.length >=1) {alert("Hand is detected")}
           });
         }
 
