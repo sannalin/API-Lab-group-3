@@ -23,8 +23,13 @@ board.on("ready", () => {
   function angrySweep() {
     // the servo will sweep between 85 and 95 degrees in 75 ms after 5000ms the servo will stop and return to a position of 90 degrees
     servo.sweep({
+<<<<<<< HEAD
       range: [180, 155],
       interval: 60,
+=======
+      range: [180, 175],
+      interval: 75,
+>>>>>>> 0c988de256bcc1eb14d716ddbf71743c9c6c7e82
     });
     setTimeout(function stop() {
       servo.stop();
@@ -37,8 +42,13 @@ board.on("ready", () => {
   // soil moisture starts to get low, needs water
   function waterSweep() {
     servo.sweep({
+<<<<<<< HEAD
       range: [180, 160],
       interval: 150,
+=======
+      range: [180, 165],
+      interval: 300,
+>>>>>>> 0c988de256bcc1eb14d716ddbf71743c9c6c7e82
     });
     setTimeout(function stop() {
       servo.stop();
@@ -51,8 +61,13 @@ board.on("ready", () => {
   // sufficient soil moisture
   function happySweep() {
     servo.sweep({
+<<<<<<< HEAD
       range: [180, 150],
       interval: 600,
+=======
+      range: [180, 160],
+      interval: 1500,
+>>>>>>> 0c988de256bcc1eb14d716ddbf71743c9c6c7e82
     });
     setTimeout(function stop() {
       servo.stop();
