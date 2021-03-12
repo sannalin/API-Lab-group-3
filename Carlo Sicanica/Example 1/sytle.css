@@ -3,11 +3,14 @@ canvas {
   display: none;
 }
 
+/* Red block on the right */
+
 .rigth {
   background-color: red;
   transition: all 1s;
   margin-left: 20vw;
 }
+/* Blue block on the left */
 
 .left {
   background-color: blue;
