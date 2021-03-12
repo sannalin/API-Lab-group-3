@@ -35,12 +35,9 @@
         }
       }
 
-      // Notice there is no 'import' statement. 'handTrack' and 'tf' is
-      // available on the index-page because of the script tag above.
       const video = document.getElementById("video");
       const canvas = document.getElementById("canvas");
       const context = canvas.getContext("2d");
-      // start webcam video stream on given video element
 
       // Load the model.
       handTrack.load().then((model) => {
@@ -49,10 +46,13 @@
           model.detect(video).then((predictions) => {
             model.renderPredictions(predictions, canvas, context, video);
             requestAnimationFrame(runDetection);
-            if(predictions.length >=1) {alert("Hand is detected")}
+            if (predictions.length >= 1) {
+              alert("Hand is detected");
+            }
           });
         }
 
+        // start webcam video stream on given video element
         function beginVideo() {
           handTrack.startVideo(video).then(function (status) {
             if (status) {
@@ -61,6 +61,8 @@
             }
           });
         }
+
+        //Sets an Eventlistener to the button and when clicked the camera either stars or stops
         document
           .getElementById("button")
           .addEventListener("click", function () {

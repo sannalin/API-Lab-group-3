@@ -7,13 +7,9 @@
   </head>
   <body>
     <img id="hand" src="hand.jpg" />
-    <img id="face" src="face.jpg"  width="300" height="451"/>
+    <img id="face" src="face.jpg" width="300" height="451" />
     <canvas id="canvas" class="border"></canvas>
     <script>
-      // Notice there is no 'import' statement. 'handTrack' and 'tf' is
-      // available on the index-page because of the script tag above.
-
-      
       const canvas = document.getElementById("canvas");
       const context = canvas.getContext("2d");
 
@@ -21,14 +17,20 @@
       handTrack.load().then((model) => {
         // detect objects in the image.
         model.detect(hand).then((predictions) => {
-          if( predictions.length >=1){alert("A hand is detected")
-        }else{alert("No hand is detected")}})
-        model.detect(face).then((predictions) => {
-          if( predictions.length >=1){alert("A hand is detected")
-        }else{alert("No hand is detected")}})
-           
+          if (predictions.length >= 1) {
+            alert("A hand is detected");
+          } else {
+            alert("No hand is detected");
+          }
         });
-    
+        model.detect(face).then((predictions) => {
+          if (predictions.length >= 1) {
+            alert("A hand is detected");
+          } else {
+            alert("No hand is detected");
+          }
+        });
+      });
     </script>
   </body>
 </html>
