@@ -16,4 +16,4 @@ To use handtrack.js in your code, include a link in your script tag in the html 
 
 ## Contributors
 
-Example made by Uriel Javier https://github.com/UrielJavier/track-hand
+Example based on the code by Uriel Javier https://github.com/UrielJavier/track-hand
