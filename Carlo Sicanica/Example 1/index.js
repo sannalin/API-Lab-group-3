@@ -63,8 +63,8 @@ var mousemovemethod = function () {
       document.getElementById("direction").classList.add("left");
       document.getElementById("direction").classList.remove("rigth");
     } else if (actualMov + ok > lastMov) {
-      direction = "right";
-      document.getElementById("direction").classList.add("rigth");
+      direction = "left";
+      document.getElementById("direction").classList.add("left");
       document.getElementById("direction").classList.remove("left");
     }
   }
