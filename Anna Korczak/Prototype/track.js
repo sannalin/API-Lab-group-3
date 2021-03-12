@@ -44,16 +44,16 @@ function toggleVideo() {
 
 function runDetection() {
     model.detect(video).then((predictions) => {
-      console.log("Predictions: ", predictions);
-      model.renderPredictions(predictions, canvas, context, video);
-      if (isVideo) {
+    console.log("Predictions: ", predictions);
+    model.renderPredictions(predictions, canvas, context, video);
+    if (isVideo) {
         requestAnimationFrame(runDetection);
-      }
-      if (predictions.length >= 1) {
+    }
+    if (predictions.length >= 1) {
         playVideo();
-      }
+    }
     });
-  }
+}
 
 function playVideo() {
     console.log("Shaky shaky")
