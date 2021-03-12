@@ -3,37 +3,26 @@
 
 <head>
 
-  <meta charset="UTF-8">
-  <title>Example 01</title>
-  <link rel="stylesheet" href="track.css">
-
+<meta charset="UTF-8">
+<title>Example-01</title>
+<link rel="stylesheet" href="https://unpkg.com/carbon-components@latest/css/carbon-components.css" />
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bx--body p20">
-    <div class="click">
-    <h2>Say hi to Stefano the plant!</h2>
-    <p>Start the video and raise your hand so it is visible in the camera window.</p>
-    <button onclick="toggleVideo()" id="trackbutton" class="button">Toggle video</button>
-  </div>
+    <div class="mb10">
+    <p20>This is the basic example with some changes, which I extended into the <a href="https://github.com/sannalin/API-Lab-group-3/tree/main/Anna%20Korczak/Prototype">prototype.</a></p20><br><br>
+    <button onclick="toggleVideo()" id="trackbutton" class="bx--btn bx--btn--secondary" type="button">Toggle Video</button>
+    </div>
+<video class="videobox canvasbox" autoplay="autoplay" id="myvideo"></video>
 
-<div class="wrapper">
+<canvas id="canvas" class="border canvasbox"></canvas>
 
-<div class="container">
-  <video class="plant" id="movement" src="plant.mov" width="400"></video>
-  <video class="videobox canvasbox" autoplay="autoplay" id="myvideo"></video>
-  <br><br>
-  <div id="updatenote" class="updatenote mt10">Loading model...</div>
-</div>
+<div id="updatenote" class="updatenote mt10"> loading model ..</div>
 
-<div class="container">  
-  <canvas id="canvas" class="border canvasbox"></canvas>
-</div>
-</div>
-
+  <script src="https://unpkg.com/carbon-components@latest/scripts/carbon-components.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+  <script src="script.js"></script>
 </body>
-
-<script src="https://unpkg.com/carbon-components@latest/scripts/carbon-components.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script> 
-<script src="track.js"></script>
 
 </html>

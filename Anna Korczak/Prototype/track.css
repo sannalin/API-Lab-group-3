@@ -2,6 +2,7 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: #c5d388;
 }
 body {
     padding: 10px;
@@ -52,10 +53,9 @@ body {
 
 .updatenote {
     padding: 10px;
-    background: rgb(245, 147, 20);
-    color: white;
+    background: #c5d388;
+    color: black;
     display: inline;
-    border-radius: 5px;
 }
 
 #myvideo {
