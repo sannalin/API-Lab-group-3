@@ -1,73 +1,55 @@
 body {
-    padding: 0px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+  padding: 0px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  .p {
-    padding: 20px;
-  }
+.p {
+  padding: 20px;
+}
 
-  .canvasbox {
-    border-radius: 3px;
-    margin-right: 10px;
-    width: 800px;
-    height: 570px;
-    border-bottom: 3px solid #0063FF;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 #00000030;
+.canvasbox {
+  border-radius: 3px;
+  margin-right: 10px;
+  width: 800px;
+  height: 570px;
+  border-bottom: 3px solid #0063ff;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 #00000030;
+}
 
-  }
+.updatenote {
+  padding: 10px;
+  background: rgb(245, 147, 20);
+  color: white;
+  display: inline;
+}
 
-  .block {
-    display: block;
-  }
+.wrapper {
+  clear: both;
+}
 
-  .hidden {
-    display: none;
-  }
+.container {
+  margin: 20px;
+  float: left;
+}
 
-  .mb10 {
-    margin-bottom: 10px
-  }
+.container h5 {
+  margin-bottom: 10px;
+}
 
-  .mt10 {
-    margin-top: 10px
-  }
+.videobox {
+  display: none;
+}
 
-  .updatenote {
-    padding: 10px;
-    background: rgb(245, 147, 20);
-    color: white;
-    display: inline;
-  }
-
-  .wrapper {
-    clear: both;
-  }
-
-  .container {
-    margin: 20px;
-    float: left;
-  }
-
-  .container h5 {
-    margin-bottom: 10px;
-    display: none
-  }
-
-  .videobox {
-    display: none;
-  }
-
-  #trackbutton {
-    padding: 10px;
-    margin: 20px;
-    border-radius: 5px;
-    border: none;
-    transition-duration: 0.4s;
-    color: white;
-    background-color: rgb(128, 0, 111);
-    outline: none;
-    font-size: 16px;
-    text-decoration: none;
-    display: inline-block;
-  }
+#trackbutton {
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
+  border: none;
+  transition-duration: 0.4s;
+  color: white;
+  background-color: rgb(128, 0, 111);
+  outline: none;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+}
