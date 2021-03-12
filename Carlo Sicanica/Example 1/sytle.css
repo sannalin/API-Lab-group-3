@@ -4,13 +4,15 @@ canvas {
 }
 
 .left {
-  background-color: blue;
-  margin-right: 5vw;
-  transition: all 1s;
+  background-image: url(blomma.jfif);
+  background-repeat: no-repeat;
+  width: 40vw;
+  height: 85vh;
+
   animation: shake 0.5s;
   animation-iteration-count: 5;
+  z-index: 1;
 }
-
 @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
@@ -47,18 +49,13 @@ canvas {
   }
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 h1 {
-  width: 20vw;
-  height: 50vh;
+  text-align: left;
+  padding-top: 1px;
 }
 
 h2 {
-  text-align: center;
+  width: 20vw;
+  height: 50vh;
+  align-items: center;
 }
