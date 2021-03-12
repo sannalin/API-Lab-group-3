@@ -52,10 +52,9 @@ body {
 
 .updatenote {
     padding: 10px;
-    background: rgb(245, 147, 20);
-    color: white;
+    background: white;
+    color: black;
     display: inline;
-    border-radius: 5px;
 }
 
 #myvideo {

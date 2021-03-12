@@ -4,36 +4,29 @@
 <head>
 
   <meta charset="UTF-8">
-  <title>Example 01</title>
-  <link rel="stylesheet" href="track.css">
-
+  <title>Handtrack.js : A library for prototyping realtime handtracking in the browser. </title>
+  <link rel="stylesheet" href="https://unpkg.com/carbon-components@latest/css/carbon-components.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bx--body p20">
-    <div class="click">
-    <h2>Say hi to Stefano the plant!</h2>
-    <p>Start the video and raise your hand so it is visible in the camera window.</p>
-    <button onclick="toggleVideo()" id="trackbutton" class="button">Toggle video</button>
+  <!-- <img id="img" src="hand.jpg"/>  -->
+  <div class="p20">
+    Handtrack.js allows you prototype handtracking interactions in the browser in 10 lines of code.
   </div>
-
-<div class="wrapper">
-
-<div class="container">
-  <video class="plant" id="movement" src="plant.mov" width="400"></video>
+  <div class="mb10">
+    <button onclick="toggleVideo()" id="trackbutton" class="bx--btn bx--btn--secondary" type="button">
+      Toggle Video
+    </button>
+    <div id="updatenote" class="updatenote mt10"> loading model ..</div>
+  </div>
   <video class="videobox canvasbox" autoplay="autoplay" id="myvideo"></video>
-  <br><br>
-  <div id="updatenote" class="updatenote mt10">Loading model...</div>
-</div>
 
-<div class="container">  
   <canvas id="canvas" class="border canvasbox"></canvas>
-</div>
-</div>
 
+  <script src="https://unpkg.com/carbon-components@latest/scripts/carbon-components.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+  <script src="script.js"></script>
 </body>
-
-<script src="https://unpkg.com/carbon-components@latest/scripts/carbon-components.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script> 
-<script src="track.js"></script>
 
 </html>
