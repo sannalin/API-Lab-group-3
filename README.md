@@ -114,5 +114,3 @@ Returns an array of classes and confidence scores that looks like:
 # Who maintains and contributes to the project
 Handtrack.js is made by Victor Dibia (https://github.com/victordibia/handtrack.js/) and we used his examples as templates for our prototypes. The prototypes are made by Anna Korczak, Carlo Sicanica and Sanna Lindholm.
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
