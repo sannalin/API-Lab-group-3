@@ -2,7 +2,6 @@ const video = document.getElementById("myvideo");
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
-// comment
 let imgindex = 1;
 let isVideo = false;
 let model = null;
@@ -16,6 +15,7 @@ const modelParams = {
   iouThreshold: 1, // ioU threshold for non-max suppression
   scoreThreshold: 0.45, // confidence threshold for predictions.
 };
+// Starts the webcam
 
 function startVideo() {
   handTrack.startVideo(video).then(function (status) {
@@ -34,6 +34,8 @@ let actualMov = 0;
 let frame = 0;
 let frameMax = 2;
 
+// Runs the detection of the hand
+
 function runDetection() {
   frame++;
   model.detect(video).then((predictions) => {
@@ -51,6 +53,9 @@ function runDetection() {
 var direction = "";
 const error = 4;
 const ok = 20;
+
+// Function that is invoked when hand is detected
+
 var mousemovemethod = function () {
   frame = 0;
   lastMov = Math.round(lastMov);
@@ -78,6 +83,6 @@ var mousemovemethod = function () {
 
 // Load the model.
 handTrack.load(modelParams).then((lmodel) => {
-  // detect objects in the image.
+  // Detect objects in the image.
   model = lmodel;
 });

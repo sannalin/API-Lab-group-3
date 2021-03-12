@@ -3,6 +3,12 @@ canvas {
   display: none;
 }
 
+/* This CSS class gets created once a hand is detected. It adds the image 
+and makes it shake.
+
+The image is royalty free and free to use, taken from here: https://unsplash.com/photos/IKvDKHWF_5w
+*/
+
 .left {
   background-image: url(blomma.jfif);
   background-repeat: no-repeat;
@@ -13,6 +19,11 @@ canvas {
   animation-iteration-count: 5;
   z-index: 1;
 }
+
+/* Creates the shaking motion, inspired by a tutorial on W3 School.
+Link: https://www.w3schools.com/howto/howto_css_shake_image.asp
+*/
+
 @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
