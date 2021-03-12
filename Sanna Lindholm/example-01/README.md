@@ -4,7 +4,7 @@ With the help of Handtrack.js pictures will be analyzed to see if they contain a
 
 ## Contributor
 
-This code was made by Sanna Lindholm.
+This code was made by Sanna Lindholm based on the code from:
 
 ### Code
 
