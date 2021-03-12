@@ -14,6 +14,8 @@ const modelParams = {
   scoreThreshold: 0.6, // confidence threshold for predictions.
 };
 
+// Function starting the video
+
 function startVideo() {
   handTrack.startVideo(video).then(function (status) {
     console.log("video started", status);
@@ -27,6 +29,7 @@ function startVideo() {
     }
   });
 }
+// Message
 
 function toggleVideo() {
   if (!isVideo) {
@@ -39,6 +42,7 @@ function toggleVideo() {
     updateNote.innerText = "Video stopped";
   }
 }
+// Hand detection
 
 function runDetection() {
   model.detect(video).then((predictions) => {
