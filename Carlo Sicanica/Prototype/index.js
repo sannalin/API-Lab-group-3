@@ -13,9 +13,10 @@ const modelParams = {
   flipHorizontal: true, // flip e.g for video
   maxNumBoxes: 1, // maximum number of boxes to detect
   iouThreshold: 1, // ioU threshold for non-max suppression
-  scoreThreshold: 0.75, // confidence threshold for predictions.
+  scoreThreshold: 0.45, // confidence threshold for predictions.
 };
-// Function starts the video
+// Starts the webcam
+
 function startVideo() {
   handTrack.startVideo(video).then(function (status) {
     console.log("video started", status);
@@ -33,7 +34,8 @@ let actualMov = 0;
 let frame = 0;
 let frameMax = 2;
 
-// Function detecting hands
+// Runs the detection of the hand
+
 function runDetection() {
   frame++;
   model.detect(video).then((predictions) => {
@@ -48,10 +50,12 @@ function runDetection() {
   });
 }
 
-// Conditionals when hand is detected
 var direction = "";
 const error = 4;
 const ok = 20;
+
+// Function that is invoked when hand is detected
+
 var mousemovemethod = function () {
   frame = 0;
   lastMov = Math.round(lastMov);
@@ -64,8 +68,8 @@ var mousemovemethod = function () {
       document.getElementById("direction").classList.add("left");
       document.getElementById("direction").classList.remove("rigth");
     } else if (actualMov + ok > lastMov) {
-      direction = "right";
-      document.getElementById("direction").classList.add("rigth");
+      direction = "left";
+      document.getElementById("direction").classList.add("left");
       document.getElementById("direction").classList.remove("left");
     }
   }
@@ -79,6 +83,6 @@ var mousemovemethod = function () {
 
 // Load the model.
 handTrack.load(modelParams).then((lmodel) => {
-  // detect objects in the image.
+  // Detect objects in the image.
   model = lmodel;
 });
